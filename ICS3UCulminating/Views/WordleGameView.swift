@@ -28,13 +28,15 @@ struct WordleGameView: View {
     // MARK: - Computed properties
     
     var body: some View {
-        VStack(spacing: 15) {
+        VStack(spacing: 0) {
+            
             // Header
             Text("WORDLE")
                 .font(.largeTitle)
                 .fontWeight(.bold)
+                .padding(.top, 10) // Small padding to avoid Dynamic Island
             
-            Spacer()
+            Spacer(minLength: 5)
             
             // Game Board (6 rows of 5 letters)
             VStack(spacing: 8) {
@@ -43,22 +45,27 @@ struct WordleGameView: View {
                     GuessRowView(guess: guess)
                 }
             }
+            .padding(.horizontal)
             
-            Spacer()
+            Spacer(minLength: 5)
             
             // Game Status Messages
-            if game.gameState == .won {
-                Text("You Won! 🎉")
-                    .font(.headline)
-                    .foregroundColor(.green)
-            } else if game.gameState == .lost {
-                Text("Game Over. The word was: \(game.targetWord.uppercased())")
-                    .font(.headline)
-                    .foregroundColor(.red)
-            } else {
-                Text("Game in progress")
-                    .opacity(0)
+            ZStack {
+                if game.gameState == .won {
+                    Text("You Won! 🎉")
+                        .font(.headline)
+                        .foregroundColor(.green)
+                } else if game.gameState == .lost {
+                    Text("Game Over. The word was: \(game.targetWord.uppercased())")
+                        .font(.headline)
+                        .foregroundColor(.red)
+                } else {
+                    // Empty space to maintain layout consistency
+                    Text(" ")
+                        .font(.headline)
+                }
             }
+            .padding(.vertical, 8)
             
             // Simple Keyboard
             VStack(spacing: 8) {
@@ -83,16 +90,17 @@ struct WordleGameView: View {
                     }
                 }
             }
-            .padding(.bottom)
+            .padding(.horizontal, 5)
+            
+            Spacer(minLength: 15)
             
             // New Game Button
             Button("New Game") {
                 game.startNewGame()
             }
             .buttonStyle(.borderedProminent)
-            .padding(.bottom)
+            .padding(.bottom, 10)
         }
-        .padding()
         // Ensure the view is focused when it appears to receive keyboard events
         .focusable()
         .focused($isFocused)

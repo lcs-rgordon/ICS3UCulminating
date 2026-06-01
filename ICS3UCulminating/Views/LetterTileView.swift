@@ -17,9 +17,9 @@ struct LetterTileView: View {
     // MARK: - Computed properties
     var body: some View {
         Text(letter)
-            .font(.title)
-            .fontWeight(.bold)
-            .frame(width: 60, height: 60)
+            .font(.system(size: 30, weight: .bold))
+            .minimumScaleFactor(0.5)
+            .frame(width: 55, height: 55)
             .background(backgroundColor)
             .foregroundColor(foregroundColor)
             .border(borderColor, width: 2)

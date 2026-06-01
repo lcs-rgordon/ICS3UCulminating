@@ -20,10 +20,21 @@ struct KeyboardKeyView: View {
         Button(action: action) {
             Text(key)
                 .font(.system(size: key.count > 1 ? 14 : 18, weight: .bold))
-                .frame(minWidth: key.count > 1 ? 55 : 32, minHeight: 45)
+                .frame(width: keyWidth, height: 50)
                 .background(backgroundColor)
                 .foregroundColor(foregroundColor)
                 .cornerRadius(4)
+        }
+    }
+    
+    // MARK: - View Helpers
+    
+    /// Calculates a fixed but responsive width for the keys.
+    private var keyWidth: CGFloat {
+        if key == "Enter" || key == "⌫" {
+            return 55
+        } else {
+            return 34
         }
     }
     
