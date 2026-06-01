@@ -37,6 +37,9 @@ class WordleGame {
     /// This is used to color the on-screen keyboard.
     var keyboardEvaluations: [String: LetterEvaluation]
     
+    /// Stores the history of all completed games in the current session.
+    var history: [CompletedGame]
+    
     // MARK: - Initializers
     
     /// Initializes a new game with a specific target word.
@@ -50,6 +53,7 @@ class WordleGame {
         self.currentWord = ""
         self.gameState = .inProgress
         self.keyboardEvaluations = [:]
+        self.history = []
         
         // Prepare 6 empty guess slots for the game board
         self.guesses = []
@@ -109,14 +113,42 @@ class WordleGame {
         // Check for win condition: guess matches the target word exactly
         if currentWord == targetWord {
             gameState = .won
+            archiveGame()
         } else if currentGuessIndex == 5 {
             // Check for loss condition: player just finished their 6th attempt
             gameState = .lost
+            archiveGame()
         } else {
             // If the game continues, move to the next row and reset the current typing buffer
             currentGuessIndex += 1
             currentWord = ""
         }
+    }
+    
+    /// Starts a new game with a random word, keeping the history intact.
+    func startNewGame() {
+        let randomWord = wordList.randomElement() ?? "apple"
+        self.targetWord = randomWord.lowercased()
+        self.currentGuessIndex = 0
+        self.currentWord = ""
+        self.gameState = .inProgress
+        self.keyboardEvaluations = [:]
+        
+        self.guesses = []
+        for _ in 1...6 {
+            self.guesses.append(Guess())
+        }
+    }
+    
+    /// Saves the current game state to the history list.
+    private func archiveGame() {
+        let completedGame = CompletedGame(
+            targetWord: targetWord,
+            guesses: guesses,
+            gameState: gameState,
+            dateCompleted: Date()
+        )
+        history.insert(completedGame, at: 0) // Add to the top of the list
     }
     
     /// Internal logic to compare a guess against the target word.

@@ -12,9 +12,8 @@ struct WordleGameView: View {
     // MARK: - Stored properties
     
     /// The view model that holds the game logic and state.
-    /// Because it is marked @Observable in the View Model file, 
-    /// SwiftUI will automatically track changes to its properties.
-    @State var game = WordleGame()
+    /// It is now passed in from the parent view to persist across tab changes.
+    var game: WordleGame
     
     /// Tracks whether the main view has focus to receive keyboard events.
     @FocusState private var isFocused: Bool
@@ -88,7 +87,7 @@ struct WordleGameView: View {
             
             // New Game Button
             Button("New Game") {
-                game = WordleGame()
+                game.startNewGame()
             }
             .buttonStyle(.borderedProminent)
             .padding(.bottom)
@@ -130,5 +129,5 @@ struct WordleGameView: View {
 // MARK: - Preview
 
 #Preview {
-    WordleGameView()
+    WordleGameView(game: WordleGame())
 }

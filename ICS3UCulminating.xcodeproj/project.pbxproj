@@ -16,6 +16,11 @@
 		811947232FCDBBB900BD07CB /* LetterTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947222FCDBBB900BD07CB /* LetterTileView.swift */; };
 		811947252FCDBBB900BD07CB /* GuessRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947242FCDBBB900BD07CB /* GuessRowView.swift */; };
 		811947272FCDBE4B00BD07CB /* KeyboardKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947262FCDBE4B00BD07CB /* KeyboardKeyView.swift */; };
+		811947292FCDC8C800BD07CB /* CompletedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947282FCDC8C800BD07CB /* CompletedGame.swift */; };
+		8119472B2FCDC8C800BD07CB /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8119472A2FCDC8C800BD07CB /* HistoryItemView.swift */; };
+		8119472D2FCDC8C800BD07CB /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8119472C2FCDC8C800BD07CB /* HistoryDetailView.swift */; };
+		8119472F2FCDC8C800BD07CB /* GameHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8119472E2FCDC8C800BD07CB /* GameHistoryView.swift */; };
+		811947312FCDC8C800BD07CB /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947302FCDC8C800BD07CB /* MainTabView.swift */; };
 		811C363B2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C363A2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift */; };
 		811C363D2FCDB2A700B313E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811C363C2FCDB2A700B313E3 /* Assets.xcassets */; };
 		811C364A2FCDB2A700B313E3 /* RELEASE.md in Resources */ = {isa = PBXBuildFile; fileRef = 811C36492FCDB2A700B313E3 /* RELEASE.md */; };
@@ -32,6 +37,11 @@
 		811947222FCDBBB900BD07CB /* LetterTileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterTileView.swift; sourceTree = "<group>"; };
 		811947242FCDBBB900BD07CB /* GuessRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessRowView.swift; sourceTree = "<group>"; };
 		811947262FCDBE4B00BD07CB /* KeyboardKeyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardKeyView.swift; sourceTree = "<group>"; };
+		811947282FCDC8C800BD07CB /* CompletedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGame.swift; sourceTree = "<group>"; };
+		8119472A2FCDC8C800BD07CB /* HistoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
+		8119472C2FCDC8C800BD07CB /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		8119472E2FCDC8C800BD07CB /* GameHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryView.swift; sourceTree = "<group>"; };
+		811947302FCDC8C800BD07CB /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		811C36372FCDB2A700B313E3 /* ICS3UCulminating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICS3UCulminating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811C363A2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICS3UCulminatingApp.swift; sourceTree = "<group>"; };
 		811C363C2FCDB2A700B313E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +96,7 @@
 				8119471C2FCDBBB900BD07CB /* LetterEvaluation.swift */,
 				8119471E2FCDBBB900BD07CB /* GameState.swift */,
 				811947202FCDBBB900BD07CB /* Guess.swift */,
+				811947282FCDC8C800BD07CB /* CompletedGame.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +116,10 @@
 				811947222FCDBBB900BD07CB /* LetterTileView.swift */,
 				811947242FCDBBB900BD07CB /* GuessRowView.swift */,
 				811947262FCDBE4B00BD07CB /* KeyboardKeyView.swift */,
+				8119472A2FCDC8C800BD07CB /* HistoryItemView.swift */,
+				8119472C2FCDC8C800BD07CB /* HistoryDetailView.swift */,
+				8119472E2FCDC8C800BD07CB /* GameHistoryView.swift */,
+				811947302FCDC8C800BD07CB /* MainTabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,15 +198,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				811947232FCDBBB900BD07CB /* LetterTileView.swift in Sources */,
+				811947292FCDC8C800BD07CB /* CompletedGame.swift in Sources */,
 				811947142FCDB4FA00BD07CB /* WordList.swift in Sources */,
 				811947252FCDBBB900BD07CB /* GuessRowView.swift in Sources */,
+				8119472B2FCDC8C800BD07CB /* HistoryItemView.swift in Sources */,
 				811947272FCDBE4B00BD07CB /* KeyboardKeyView.swift in Sources */,
+				8119472D2FCDC8C800BD07CB /* HistoryDetailView.swift in Sources */,
 				8119471B2FCDBA5100BD07CB /* WordleGameView.swift in Sources */,
 				811947212FCDBBB900BD07CB /* Guess.swift in Sources */,
+				8119472F2FCDC8C800BD07CB /* GameHistoryView.swift in Sources */,
 				811947182FCDB79400BD07CB /* WordleGame.swift in Sources */,
 				811C363B2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift in Sources */,
 				8119471D2FCDBBB900BD07CB /* LetterEvaluation.swift in Sources */,
 				8119471F2FCDBBB900BD07CB /* GameState.swift in Sources */,
+				811947312FCDC8C800BD07CB /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
