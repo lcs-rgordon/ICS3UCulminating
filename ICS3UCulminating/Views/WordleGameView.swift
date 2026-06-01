@@ -60,8 +60,12 @@ struct WordleGameView: View {
                 ForEach(keyboardRows, id: \.self) { row in
                     HStack(spacing: 6) {
                         ForEach(row, id: \.self) { key in
-                            Button(action: {
-                                // We call the view model functions based on the key pressed
+                            // Use the new KeyboardKeyView to show feedback
+                            KeyboardKeyView(
+                                key: key,
+                                evaluation: game.keyboardEvaluations[key.lowercased()] ?? .pending
+                            ) {
+                                // Keyboard action logic
                                 if key == "Enter" {
                                     game.submitGuess()
                                 } else if key == "⌫" {
@@ -69,13 +73,6 @@ struct WordleGameView: View {
                                 } else {
                                     game.addLetter(key)
                                 }
-                            }) {
-                                Text(key)
-                                    .font(.system(size: key.count > 1 ? 14 : 18, weight: .bold))
-                                    .frame(minWidth: key.count > 1 ? 55 : 32, minHeight: 45)
-                                    .background(Color.gray.opacity(0.2))
-                                    .foregroundColor(.primary)
-                                    .cornerRadius(4)
                             }
                         }
                     }

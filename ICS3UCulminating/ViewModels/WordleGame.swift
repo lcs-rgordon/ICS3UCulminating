@@ -33,6 +33,10 @@ class WordleGame {
     /// The current status of the game (inProgress, won, or lost).
     var gameState: GameState
     
+    /// Tracks the best evaluation found so far for each letter of the alphabet.
+    /// This is used to color the on-screen keyboard.
+    var keyboardEvaluations: [String: LetterEvaluation]
+    
     // MARK: - Initializers
     
     /// Initializes a new game with a specific target word.
@@ -45,6 +49,7 @@ class WordleGame {
         self.currentGuessIndex = 0
         self.currentWord = ""
         self.gameState = .inProgress
+        self.keyboardEvaluations = [:]
         
         // Prepare 6 empty guess slots for the game board
         self.guesses = []
@@ -97,6 +102,9 @@ class WordleGame {
         // Calculate the feedback (Green/Yellow/Gray) for each letter
         let evaluation = evaluate(guess: currentWord)
         guesses[currentGuessIndex].evaluations = evaluation
+        
+        // Update keyboard evaluations based on this guess
+        updateKeyboardEvaluations(word: currentWord, evaluations: evaluation)
         
         // Check for win condition: guess matches the target word exactly
         if currentWord == targetWord {
@@ -151,5 +159,41 @@ class WordleGame {
         }
         
         return result
+    }
+    
+    /// Updates the global tracking of letter evaluations for the keyboard.
+    /// We only upgrade a letter's status (e.g., from misplaced to correct).
+    private func updateKeyboardEvaluations(word: String, evaluations: [LetterEvaluation]) {
+        let characters = Array(word)
+        for i in 0..<characters.count {
+            let letter = String(characters[i])
+            let newEvaluation = evaluations[i]
+            
+            let existingEvaluation = keyboardEvaluations[letter] ?? .pending
+            
+            // Logic to decide if we should update the color:
+            // Correct (Green) > Misplaced (Yellow) > Wrong (Gray) > Pending (Clear)
+            if shouldUpgrade(from: existingEvaluation, to: newEvaluation) {
+                keyboardEvaluations[letter] = newEvaluation
+            }
+        }
+    }
+    
+    /// Determines if a new evaluation is "better" than an existing one for keyboard display.
+    private func shouldUpgrade(from existing: LetterEvaluation, to new: LetterEvaluation) -> Bool {
+        switch (existing, new) {
+        case (_, .correct):
+            return true // Green always wins
+        case (.correct, _):
+            return false // Nothing beats Green
+        case (_, .misplaced):
+            return true // Yellow beats Gray and Pending
+        case (.misplaced, _):
+            return false // Only Green beats Yellow
+        case (.pending, .wrong):
+            return true // Gray beats Pending
+        default:
+            return false
+        }
     }
 }
