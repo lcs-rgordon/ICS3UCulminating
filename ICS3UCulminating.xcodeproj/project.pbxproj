@@ -10,6 +10,7 @@
 		811947142FCDB4FA00BD07CB /* WordList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947132FCDB4FA00BD07CB /* WordList.swift */; };
 		811947162FCDB79400BD07CB /* Wordle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947152FCDB79400BD07CB /* Wordle.swift */; };
 		811947182FCDB79400BD07CB /* WordleGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811947172FCDB79400BD07CB /* WordleGame.swift */; };
+		8119471B2FCDBA5100BD07CB /* WordleGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8119471A2FCDBA5100BD07CB /* WordleGameView.swift */; };
 		811C363B2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C363A2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift */; };
 		811C363D2FCDB2A700B313E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811C363C2FCDB2A700B313E3 /* Assets.xcassets */; };
 		811C36402FCDB2A700B313E3 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C363F2FCDB2A700B313E3 /* House.swift */; };
@@ -24,6 +25,7 @@
 		811947152FCDB79400BD07CB /* Wordle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordle.swift; sourceTree = "<group>"; };
 		811947172FCDB79400BD07CB /* WordleGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleGame.swift; sourceTree = "<group>"; };
 		811947192FCDB8EF00BD07CB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8119471A2FCDBA5100BD07CB /* WordleGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleGameView.swift; sourceTree = "<group>"; };
 		811C36372FCDB2A700B313E3 /* ICS3UCulminating.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ICS3UCulminating.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		811C363A2FCDB2A700B313E3 /* ICS3UCulminatingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICS3UCulminatingApp.swift; sourceTree = "<group>"; };
 		811C363C2FCDB2A700B313E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				811C36452FCDB2A700B313E3 /* HousesListView.swift */,
 				811C36472FCDB2A700B313E3 /* HouseItemView.swift */,
+				8119471A2FCDBA5100BD07CB /* WordleGameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			files = (
 				811947142FCDB4FA00BD07CB /* WordList.swift in Sources */,
 				811C36482FCDB2A700B313E3 /* HouseItemView.swift in Sources */,
+				8119471B2FCDBA5100BD07CB /* WordleGameView.swift in Sources */,
 				811C36402FCDB2A700B313E3 /* House.swift in Sources */,
 				811947162FCDB79400BD07CB /* Wordle.swift in Sources */,
 				811C36462FCDB2A700B313E3 /* HousesListView.swift in Sources */,
