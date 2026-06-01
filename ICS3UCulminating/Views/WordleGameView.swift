@@ -16,6 +16,9 @@ struct WordleGameView: View {
     /// SwiftUI will automatically track changes to its properties.
     @State var game = WordleGame()
     
+    /// Tracks whether the main view has focus to receive keyboard events.
+    @FocusState private var isFocused: Bool
+    
     /// The layout for our simple clickable keyboard.
     private let keyboardRows = [
         ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
@@ -88,6 +91,36 @@ struct WordleGameView: View {
             .padding(.bottom)
         }
         .padding()
+        // Ensure the view is focused when it appears to receive keyboard events
+        .focusable()
+        .focused($isFocused)
+        .onAppear {
+            isFocused = true
+        }
+        // Handle physical keyboard input
+        .onKeyPress { keyPress in
+            handleKeyPress(keyPress)
+            return .handled
+        }
+    }
+    
+    // MARK: - Functions
+    
+    /// Processes key presses from a physical keyboard.
+    private func handleKeyPress(_ keyPress: KeyPress) {
+        let key = keyPress.characters
+        
+        if keyPress.key == .return {
+            game.submitGuess()
+        } else if keyPress.key == .delete || keyPress.key == .deleteForward {
+            game.removeLetter()
+        } else if key.count == 1 {
+            // Check if the character is a letter
+            let letters = CharacterSet.letters
+            if let firstChar = key.unicodeScalars.first, letters.contains(firstChar) {
+                game.addLetter(key)
+            }
+        }
     }
 }
 
