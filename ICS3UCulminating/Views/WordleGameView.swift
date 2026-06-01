@@ -29,7 +29,7 @@ struct WordleGameView: View {
     // MARK: - Computed properties
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 15) {
             // Header
             Text("WORDLE")
                 .font(.largeTitle)
@@ -56,6 +56,9 @@ struct WordleGameView: View {
                 Text("Game Over. The word was: \(game.targetWord.uppercased())")
                     .font(.headline)
                     .foregroundColor(.red)
+            } else {
+                Text("Game in progress")
+                    .opacity(0)
             }
             
             // Simple Keyboard
